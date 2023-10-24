@@ -19,7 +19,7 @@ export function Contact() {
       {isLoading && <Loader />}
       {contacts.map(({ id, name, phone }) => (
         <li className={css.item} key={id}>
-          {name}: {phone}
+          {name}: <span>{phone}</span>
           <button type="button" onClick={() => dispatch(deleteContact(id))}>
             Delete
           </button>
