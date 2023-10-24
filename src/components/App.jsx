@@ -1,16 +1,27 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import Form  from './Form/Form'
+import { Section } from './Section/Section';
+import { Contact } from './Contact/Contact';
+import { Filter } from './Filter/Filter';
+
+export default function App() {
+         return (
+      <>
+        <Section title='Phonebook'>
+        <Form />
+    </Section>
+    <Section title='Contacts'>
+    <Filter />
+    
+    <Contact/>
+    </Section>
+    </>
+    
+    )
+}
+
+
+
+
+
+
+
