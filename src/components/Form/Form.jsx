@@ -3,6 +3,7 @@ import css from '../Form/Form.module.css';
 import React, { useState } from 'react';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/thunks';
+import Notiflix from 'notiflix';
 
 export default function Form({ createContacts }) {
   const [name, setName] = useState('');
@@ -20,8 +21,13 @@ export default function Form({ createContacts }) {
 
   const onSubmit = evt => {
     evt.preventDefault();
-    if (contacts.find(el => el.name === name))
-      return alert(`${name} this contact exists`);
+    if (contacts.find(el => el.name === name)) {
+      Notiflix.Notify.warning(`${name} this contact exists`);
+      setName('');
+      setPhone('');
+      return;
+    }
+
     dispatch(addContact({ name, phone }));
     setName('');
     setPhone('');
