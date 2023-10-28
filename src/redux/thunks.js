@@ -1,17 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchAddContact, fetchDeleteContact, getContacts } from 'api/api';
 import Notiflix from 'notiflix';
+import { setAuthHeader } from './auth/operation';
 
-export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
-  try {
-    const data = await getContacts();
-    Notiflix.Notify.info(`There are ${data.length} friends in your contacts`);
-    return data;
-  } catch (error) {
-    console.log(error);
-    Notiflix.Notify.warning(error.mesage);
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async () => {
+    try {
+      // const token = getState().auth.token;
+      // setAuthHeader(token);
+      const data = await getContacts();
+      return data;
+    } catch (error) {
+      console.log(error);
+      Notiflix.Notify.warning(error.mesage);
+    }
   }
-});
+);
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
