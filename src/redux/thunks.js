@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
   try {
     const data = await getContacts();
-    Notiflix.Notify.info(`There are ${data.length} friends in your contacts`);
+    
     return data;
   } catch (error) {
     console.log(error);
